@@ -1,0 +1,12 @@
+namespace@UFPA
+table@Users
+False,0,ID,int,True,
+True,0,Password,string,False,
+True,0,Username,string,False,
+True,0,Name,string,False,
+True,0,Email,string,False,
+True,0,Phone,string,False,
+True,0,SignupDate,string,False,
+True,0,IsAdmin,bool,False,
+True,0,IsActive,bool,False,
+isactiveflag@False

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?><coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties"><dc:creator>Dennis Magno</dc:creator><dc:description>Metro Modern UI or MetroFramework brings Windows 8 UI to .NET Windows Forms applications.
+
+Supported platforms:
+
+Windows XP SP1/SP2/SP3
+
+Windows Vista
+
+Windows 7
+
+Windows 8
+
+Windows 10</dc:description><dc:identifier>MetroModernUI</dc:identifier><version>1.4.0.0</version><dc:language>en-US</dc:language><keywords>metroframework modernui modern ui metro metroui winforms windows8</keywords><dc:title>Metro Modern UI - Metro Framework</dc:title><dc:subject>NuGet Package Explorer</dc:subject></coreProperties>
