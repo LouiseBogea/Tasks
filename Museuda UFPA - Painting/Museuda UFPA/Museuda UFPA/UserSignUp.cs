@@ -22,6 +22,21 @@ namespace UFPA
         {
             
             InitializeComponent();
+            pnSignUp.Visible = false;
+        }
+
+        
+
+        private void BtnLoginTab_Click(object sender, EventArgs e)
+        {
+            pnSignUp.Visible = false;
+            pnLogin.Visible = true;
+        }
+
+        private void BtnSignupTab_Click(object sender, EventArgs e)
+        {
+            pnLogin.Visible = false;
+            pnSignUp.Visible = true;
         }
 
         private void BtnSignUp_Click(object sender, EventArgs e)
