@@ -78,7 +78,9 @@ public bool IsRestored;
 public bool IsInTheStore;
 public bool IsSignatureAvailable;
 public bool IsMarked;
-public Paintings()
+        public string Technique;
+
+        public Paintings()
 {
 }
 public Paintings(int PaintingID,string RegistrationNumber,string Collection,bool IsAssignedToAuthor,int AuthorPaintingID,string Title,string WorkCondition,string WorkConditionDescription,string InventoryNumber,string FrontPhotoPath,string BackPhotoPath,string BeforeRestorationImagePath,string AfterRestorationImagePath,string LastRestorationDate,string DrawerNumber,string CurrentLocation,string LocalLocation,string TagTitle,string Tag,string TagDescription,string Object,string Copy,string CreatedDate,string ModifiedDate,string CultureGroup,string DatePosition,string Style,string Movement,string Period,string SignaturePosition,string SignaturePath,string SinatureDescription,string MarkedPosition,string MarkedPath,string ProcessNumber,string WayOfAcquisition,string DateOfAcquisition,string PurchasePrice,string InsuranceValue,string Publisher,string Edition,string EditionNumber,string TypeOfAge,string Category,string ProviderName,string FrameHeight,string FrameWidth,string FrameDepth,string FrameWeight,string FrameShape,string PrintedAreaHeight,string PrintedAreaWidth,string PrintedAreaDepth,string PrintedAreaWeight,string PrintedAreaShape,string FormalDescription,string ContentDescription,string KeywordsDescription,string ExOwner,string Exhibition,string Reference,string Notes,int PaintingViewCount,int ModifiedBy,int CreatedBy,bool IsPhotoAvailable,bool IsRestored,bool IsInTheStore,bool IsSignatureAvailable,bool IsMarked)

@@ -1,3 +1,6 @@
+**/bin/Debug/
+**/bin/Release/
+Museuda UFPA - Painting/Museuda UFPA/.vs/
 
 # Created by https://www.gitignore.io/api/windows,visualstudio
 # Edit at https://www.gitignore.io/?templates=windows,visualstudio
@@ -62,7 +65,7 @@ bld/
 [Ll]og/
 
 # Visual Studio 2015/2017 cache/options directory
-.vs/
+**/.vs
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 

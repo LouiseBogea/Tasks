@@ -15,8 +15,8 @@ namespace UFPA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserSignUp());
-            //Application.Run(new frmAdmin());
+            //Application.Run(new UserSignUp());
+            Application.Run(new frmAdmin());
             //Application.Run(new testForm1());
         }
     }

@@ -45,7 +45,6 @@
     <Compile Include="AuthorPaintings.cs" />
     <Compile Include="Authors.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="painting.cs" />
     <Compile Include="Paintings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users.cs" />

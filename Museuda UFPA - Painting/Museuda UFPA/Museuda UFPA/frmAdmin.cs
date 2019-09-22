@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace UFPA
 {
     public partial class frmAdmin : MetroFramework.Forms.MetroForm
     {
+        DAL.PaintingsDAL pd = new DAL.PaintingsDAL();
+        
         public frmAdmin()
         {
             InitializeComponent();
@@ -179,20 +182,15 @@ namespace UFPA
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DAL.paintingDAL pd = new DAL.paintingDAL();
+            //DAL.PaintingsDAL pd = new DAL.PaintingsDAL();
+            //Common.Paintings p = new Common.Paintings();
+            Common.Paintings p = new Common.Paintings();
 
-            Common.painting p = new Common.painting();
-            p.id = pd.GetMaxPrimaryKey() + 1;
-            p.artistid = 2342;
-            if (pd.Insert(p))
-            {
-                // success
-            }
-            clsPainting objPainting = new clsPainting();
-            objPainting.RegistrationNumber = txtRegNumber.Text.Trim();
-            objPainting.InventoryNumber = txtInventoryNumber.Text.Trim();
-            objPainting.Collection = txtCollection.Text.Trim();
-            objPainting.IsAssignedToAuthor = rbAssignedAuthorYes.Checked;
+            p.PaintingID = pd.GetMaxPrimaryKey() + 1;
+            p.RegistrationNumber = txtRegNumber.Text.Trim();
+            p.InventoryNumber = txtInventoryNumber.Text.Trim();
+            p.Collection = txtCollection.Text.Trim();
+            p.IsAssignedToAuthor = rbAssignedAuthorYes.Checked;
             //if (objPainting.IsAssignedToAuthor)
             //{
             //    //Insert Painting ID to AuthorPainting table.
@@ -203,116 +201,96 @@ namespace UFPA
             //        int AuthorId = Convert.ToInt32(castedItem["AuthorID"].ToString());
             //    }
             //}
-            objPainting.Title = txtTitle.Text.Trim();
-            objPainting.WorkCondition = cboCondition.SelectedItem.ToString();
-            objPainting.WorkConditionDescription = txtConditionDescription.Text.Trim();
-            objPainting.IsPhotoAvailable = rbPhotoYes.Checked;
-            if (objPainting.IsPhotoAvailable)
+            p.Title = txtTitle.Text.Trim();
+            p.WorkCondition = cboCondition.SelectedItem.ToString();
+            p.WorkConditionDescription = txtConditionDescription.Text.Trim();
+            p.IsPhotoAvailable = rbPhotoYes.Checked;
+            if (p.IsPhotoAvailable)
             {
-                objPainting.FrontPhotoPath = txtPhotoFrontPath.Text.Trim();
-                objPainting.BackPhotoPath = txtPhotoBackPath.Text.Trim();
+                p.FrontPhotoPath = txtPhotoFrontPath.Text.Trim();
+                p.BackPhotoPath = txtPhotoBackPath.Text.Trim();
             }
-            objPainting.IsRestored = rbRestoredYes.Checked;
-            if (objPainting.IsRestored)
+            p.IsRestored = rbRestoredYes.Checked;
+            if (p.IsRestored)
             {
-                objPainting.BeforeRestorationImagePath = txtBeforeRestorationPath.Text.Trim();
-                objPainting.AfterRestorationImagePath = txtAfterRestorationPath.Text.Trim();
-                objPainting.LastRestorationDate = dateTimeRestorationDate.Value.Date;
+                p.BeforeRestorationImagePath = txtBeforeRestorationPath.Text.Trim();
+                p.AfterRestorationImagePath = txtAfterRestorationPath.Text.Trim();
+                p.LastRestorationDate = dateTimeRestorationDate.Value.Date.ToString();
             }
-            objPainting.IsInTheStore = rbInStoreYes.Checked;
-            if (objPainting.IsInTheStore)
+            p.IsInTheStore = rbInStoreYes.Checked;
+            if (p.IsInTheStore)
             {
-                objPainting.DrawerNumber = txtDrawerNumber.Text.Trim();
-                objPainting.CurrentLocation = txtCurrentLocation.Text.Trim();
-                objPainting.LocalLocation = txtLocalLocation.Text.Trim();
+                p.DrawerNumber = txtDrawerNumber.Text.Trim();
+                p.CurrentLocation = txtCurrentLocation.Text.Trim();
+                p.LocalLocation = txtLocalLocation.Text.Trim();
             }
-            objPainting.TagTitle = txtTagTitle.Text.Trim();
-            objPainting.TagDescription = txtTagDescription.Text.Trim();
-            objPainting.Object = txtObject.Text.Trim();
-            objPainting.Copy = txtCopy.Text.Trim();
-            objPainting.Technique = cboTechnique.SelectedItem.ToString();
-            objPainting.CreatedBy = 1;//TODO
-            objPainting.CreatedDate = DateTime.Now;
-            objPainting.ModifiedBy = 1;//TODO
-            objPainting.ModifiedDate = DateTime.Now; //TODO
-            objPainting.CultureGroup = txtCultureGroup.Text.Trim();
-            objPainting.DatePosition = cboDatePosition.SelectedItem.ToString();
-            objPainting.Style = txtStyle.Text.Trim();
-            objPainting.Movement = txtMovement.Text.Trim();
-            objPainting.Period = txtPeriod.Text.Trim();
-            objPainting.IsSignatureAvailable = rbSignatureYes.Checked;
-            if (objPainting.IsSignatureAvailable)
+            p.TagTitle = txtTagTitle.Text.Trim();
+            p.TagDescription = txtTagDescription.Text.Trim();
+            p.Object = txtObject.Text.Trim();
+            p.Copy = txtCopy.Text.Trim();
+            p.Technique = cboTechnique.SelectedItem.ToString();
+            p.CreatedBy = 1;//TODO
+            p.CreatedDate = DateTime.Now.ToString();
+            p.ModifiedBy = 1;//TODO
+            p.ModifiedDate = DateTime.Now.ToString(); //TODO
+            p.CultureGroup = txtCultureGroup.Text.Trim();
+            p.DatePosition = cboDatePosition.SelectedItem.ToString();
+            p.Style = txtStyle.Text.Trim();
+            p.Movement = txtMovement.Text.Trim();
+            p.Period = txtPeriod.Text.Trim();
+            p.IsSignatureAvailable = rbSignatureYes.Checked;
+            if (p.IsSignatureAvailable)
             {
-                objPainting.SignaturePosition = cboSignaturePosition.SelectedItem.ToString();
-                objPainting.SignaturePath = txtSignaturePath.Text.Trim();
+                p.SignaturePosition = cboSignaturePosition.SelectedItem.ToString();
+                p.SignaturePath = txtSignaturePath.Text.Trim();
             }
-            objPainting.IsMarked = rbMarkedYes.Checked;
-            if (objPainting.IsMarked)
+            p.IsMarked = rbMarkedYes.Checked;
+            if (p.IsMarked)
             {
-                objPainting.MarkedPosition = cboMarkedPosition.SelectedItem.ToString();
-                objPainting.MarkedPath = txtMarkedPath.Text.Trim();
+                p.MarkedPosition = cboMarkedPosition.SelectedItem.ToString();
+                p.MarkedPath = txtMarkedPath.Text.Trim();
             }
-            objPainting.ProcessNumber = txtProcessNumber.Text.Trim();
-            objPainting.WayOfAcquisition = rbSold.Checked ? rbSold.Text : rbGift.Text;
-            objPainting.DateOfAcquisition = dTimeDateOfAcquisition.Value.Date;
-            objPainting.PurchasePrice = txtPurchasePrice.Text.Trim();
-            objPainting.InsuranceValue = txtInsuranceValue.Text.Trim();
-            objPainting.Publisher = txtPublisher.Text.Trim();
-            objPainting.Edition = txtEdition.Text.Trim();
-            objPainting.EditionNumber = txtEditionNumber.Text.Trim();
-            objPainting.TypeOfAge = txtTypeOfAge.Text.Trim();
-            objPainting.Category = cboCategory.SelectedItem.ToString();
-            objPainting.FrameHeight = txtFrameHeight.Text.Trim();
-            objPainting.FrameWidth = txtFrameWidth.Text.Trim();
-            objPainting.FrameDepth = txtFrameDepth.Text.Trim();
-            objPainting.FrameWeight = txtFrameWeight.Text.Trim();
-            objPainting.FrameShape = txtFrameShape.Text.Trim();
-            objPainting.PrintedAreaHeight = txtPrintedAreaHeight.Text.Trim();
-            objPainting.PrintedAreaWidth = txtPrintedAreaWidth.Text.Trim();
-            objPainting.PrintedAreaDepth = txtPrintedAreaDepth.Text.Trim();
-            objPainting.PrintedAreaWeight = txtPrintedAreaWeight.Text.Trim();
-            objPainting.PrintedAreaShape = txtPrintedAreaShape.Text.Trim();
-            objPainting.FormalDescription = txtFormalDescription.Text.Trim();
-            objPainting.ContentDescription = txtContentDescription.Text.Trim();
-            objPainting.KeywordsDescription = txtKeywordsDescription.Text.Trim();
-            objPainting.ExOwner = txtExOwners.Text.Trim();
-            objPainting.Exhibition = txtExhibition.Text.Trim();
-            objPainting.Reference = txtReferences.Text.Trim();
-            objPainting.Notes = txtNotes.Text.Trim();
-            objPainting.PaintingViewCount = 0;//TODO
-        }
+            p.ProcessNumber = txtProcessNumber.Text.Trim();
+            p.WayOfAcquisition = rbSold.Checked ? rbSold.Text : rbGift.Text;
+            p.DateOfAcquisition = dTimeDateOfAcquisition.Value.Date.ToString();
+            p.PurchasePrice = txtPurchasePrice.Text.Trim();
+            p.InsuranceValue = txtInsuranceValue.Text.Trim();
+            p.Publisher = txtPublisher.Text.Trim();
+            p.Edition = txtEdition.Text.Trim();
+            p.EditionNumber = txtEditionNumber.Text.Trim();
+            p.TypeOfAge = txtTypeOfAge.Text.Trim();
+            //p.Category = cboCategory.SelectedItem.ToString();
+            p.FrameHeight = txtFrameHeight.Text.Trim();
+            p.FrameWidth = txtFrameWidth.Text.Trim();
+            p.FrameDepth = txtFrameDepth.Text.Trim();
+            p.FrameWeight = txtFrameWeight.Text.Trim();
+            p.FrameShape = txtFrameShape.Text.Trim();
+            p.PrintedAreaHeight = txtPrintedAreaHeight.Text.Trim();
+            p.PrintedAreaWidth = txtPrintedAreaWidth.Text.Trim();
+            p.PrintedAreaDepth = txtPrintedAreaDepth.Text.Trim();
+            p.PrintedAreaWeight = txtPrintedAreaWeight.Text.Trim();
+            p.PrintedAreaShape = txtPrintedAreaShape.Text.Trim();
+            p.FormalDescription = txtFormalDescription.Text.Trim();
+            p.ContentDescription = txtContentDescription.Text.Trim();
+            p.KeywordsDescription = txtKeywordsDescription.Text.Trim();
+            p.ExOwner = txtExOwners.Text.Trim();
+            p.Exhibition = txtExhibition.Text.Trim();
+            p.Reference = txtReferences.Text.Trim();
+            p.Notes = txtNotes.Text.Trim();
+            p.PaintingViewCount = 0;//TODO
 
-        private void InsertPaintingData(clsPainting objPainting)
-        {
-            try
+            if (pd.Insert(p))
             {
-                string Query = ",IsInTheStore,DrawerNumber,CurrentLocation,LocalLocation,TagTitle" +
-                        ",TagDescription,Object,Copy,Technique,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate" +
-                        ",CultureGroup,DatePosition,Style,Movement,Period,IsSignatureAvailable,SignaturePosition" +
-                        ",SignaturePath,SinatureDescription,IsMarked,MarkedPosition,MarkedPath,ProcessNumber" +
-                        ",WayOfAcquisition,DateOfAcquisition,PurchasePrice,InsuranceValue,Publisher,Edition" +
-                        ",EditionNumber,TypeOfAge,Category,FrameHeight,FrameWidth,FrameDepth,FrameWeight,FrameShape" +
-                        ",PrintedAreaHeight,PrintedAreaWidth,PrintedAreaDepth,PrintedAreaWeight,PrintedAreaShape" +
-                        ",FormalDescription,ContentDescription,KeywordsDescription,ExOwner,Exhibition,Reference,Notes,PaintingViewCount)" +
-                        "VALUES ('" + objPainting.RegistrationNumber + "', '" + objPainting.InventoryNumber + "', '" + objPainting.Collection + "', '" + objPainting.IsAssignedToAuthor + "" +
-                        ", '" + objPainting.Title + "', '" + objPainting.WorkCondition + "', '" + objPainting.WorkConditionDescription + "', '" + objPainting.IsPhotoAvailable + "', '" + objPainting.FrontPhotoPath + "'" +
-                        ", '" + objPainting.BackPhotoPath + "', '" + objPainting.IsRestored + "', '" + objPainting.BeforeRestorationImagePath + "', '" + objPainting.AfterRestorationImagePath + "','" + objPainting.LastRestorationDate + "'" +
-                        ", '" + objPainting.IsInTheStore + "', '" + objPainting.DrawerNumber + "', '" + objPainting.CurrentLocation + "', '" + objPainting.LocalLocation + "', '" + objPainting.TagTitle + "'" +
-                        ", '" + objPainting.TagDescription + "', '" + objPainting.Object + "', '" + objPainting.Copy + "', '" + objPainting.Technique + "', '" + objPainting.CreatedBy + "', '" + objPainting.CreatedDate + "', '" + objPainting.ModifiedBy + "', '" + objPainting.ModifiedDate + "'" +
-                        ", '" + objPainting.CultureGroup + "', '" + objPainting.DatePosition + "', '" + objPainting.Style + "', '" + objPainting.Movement + "', '" + objPainting.Period + "', '" + objPainting.IsSignatureAvailable + "', '" + objPainting.SignaturePosition + "'" +
-                        ", '" + objPainting.SignaturePath + "', '" + objPainting.SignatureDescription + "', '" + objPainting.IsMarked + "', '" + objPainting.MarkedPosition + "', '" + objPainting.MarkedPath + "', '" + objPainting.ProcessNumber + "'" +
-                        ", '" + objPainting.WayOfAcquisition + "', '" + objPainting.DateOfAcquisition + "', '" + objPainting.PurchasePrice + "', '" + objPainting.InsuranceValue + "', '" + objPainting.Publisher + "', '" + objPainting.Edition + "'" +
-                        ", '" + objPainting.EditionNumber + "', '" + objPainting.TypeOfAge + "', '" + objPainting.Category + "', '" + objPainting.FrameHeight + "', '" + objPainting.FrameWidth + "', '" + objPainting.FrameDepth + "', '" + objPainting.FrameWeight + "', '" + objPainting.FrameShape + "'" +
-                        ", '" + objPainting.PrintedAreaHeight + "', '" + objPainting.PrintedAreaWidth + "', '" + objPainting.PrintedAreaDepth + "', '" + objPainting.PrintedAreaWeight + "', '" + objPainting.PrintedAreaShape + "'" +
-                        ", '" + objPainting.FormalDescription + "', '" + objPainting.ContentDescription + "', '" + objPainting.KeywordsDescription + "', '" + objPainting.ExOwner + "', '" + objPainting.Exhibition + "', '" + objPainting.Reference + "', '" + objPainting.Notes + "', '" + objPainting.PaintingViewCount + "')";
-
+                // success
+                Debug.WriteLine("Record Inserted!");
             }
-            catch (Exception ex)
+            else
             {
-
+                Debug.WriteLine("Record Not Inserted");
             }
         }
 
+       
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
             try
