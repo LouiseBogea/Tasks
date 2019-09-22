@@ -53,6 +53,7 @@ nunit-*.xml
 [Rr]eleasePS/
 dlldata.c
 
+UFPA.DAL/DBHelper.cs
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 
